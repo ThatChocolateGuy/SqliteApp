@@ -4,13 +4,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.view.Surface;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "student.db";
-    public static final String TABLE_NAME= "student_table";
+    public static final String TABLE_NAME = "student_table";
     public static final String COL_1 = "ID";
-    public static final String COL_2 = "FIRST NAME";
+    public static final String COL_2 = "NAME";
     public static final String COL_3 = "SURNAME";
     public static final String COL_4 = "MARKS";
 
@@ -43,7 +42,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
-        if (result == -1) return false;
-        else return true;
+        if (result == -1)
+            return false;
+        else
+            return true;
     }
 }

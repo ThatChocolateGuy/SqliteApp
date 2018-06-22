@@ -79,7 +79,7 @@
         android:id="@+id/imageButtonAdd"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="36dp"
         android:backgroundTint="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
