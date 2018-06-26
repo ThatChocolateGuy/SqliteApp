@@ -94,47 +94,45 @@
         android:id="@+id/imageButtonAdd"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="272dp"
+        android:layout_marginBottom="223dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginStart="80dp"
         android:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonViewData"
-        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <Button
         android:id="@+id/buttonViewData"
         android:layout_width="120dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="36dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginEnd="32dp"
         android:backgroundTint="@color/colorAccent"
         android:text="View Data"
         app:layout_constraintBottom_toTopOf="@+id/buttonUpdateData"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonAdd" />
+        app:layout_constraintEnd_toStartOf="@+id/buttonDeleteData" />
 
     <Button
         android:id="@+id/buttonDeleteData"
         android:layout_width="120dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="272dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginBottom="223dp"
+        android:layout_marginEnd="56dp"
         android:backgroundTint="@android:color/holo_red_light"
         android:text="Flush Data"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonViewData" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/buttonUpdateData"
         android:layout_width="120dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="216dp"
-        android:layout_marginStart="220dp"
+        android:layout_marginBottom="176dp"
+        android:layout_marginEnd="32dp"
         android:backgroundTint="?attr/colorError"
         android:text="Update Data"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/buttonDeleteData" />
 
     <TextView
         android:id="@+id/textViewID"

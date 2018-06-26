@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "student.db";
     public static final String TABLE_NAME = "student_table";
-    public static final String COL_1 = "ID";
+    public static String COL_1 = "ID";
     public static final String COL_2 = "NAME";
     public static final String COL_3 = "SURNAME";
     public static final String COL_4 = "MARKS";
@@ -55,9 +55,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    public boolean updateData(String id, String name, String surname, String marks) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(COL_1, id);
+        contentValues.put(COL_2, name);
+        contentValues.put(COL_3, surname);
+        contentValues.put(COL_4, marks);
+
+        db.update(TABLE_NAME, contentValues, "ID = ?", new String[] { id });
+        return true;
+    }
+
     public Cursor deleteAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor result = db.rawQuery("delete from " + TABLE_NAME, null);
+        db.delete("SQLITE_SEQUENCE", "NAME = '" + TABLE_NAME + "'", null);
         return result;
     }
 }
