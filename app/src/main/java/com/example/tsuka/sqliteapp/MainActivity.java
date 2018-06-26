@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper myDb;
     EditText editName, editSurname, editMarks;
     ImageButton btnAddData;
-    Button btnViewData;
+    Button btnViewData, btnDeleteData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +28,11 @@ public class MainActivity extends AppCompatActivity {
         editMarks = findViewById(R.id.editTextMarks);
         btnAddData = findViewById(R.id.imageButtonAdd);
         btnViewData = findViewById(R.id.buttonViewData);
+        btnDeleteData = findViewById(R.id.buttonDeleteData);
 
         addData();
         viewData();
+        flushData();
     }
 
     public void addData() {
@@ -61,6 +63,35 @@ public class MainActivity extends AppCompatActivity {
                         if (dataResult.getCount() == 0){
                             // Show Error Message
                             showMessage("Error", "No Data Found");
+                            return;
+                        }
+
+                        StringBuffer buffer = new StringBuffer();
+
+                        while (dataResult.moveToNext()) {
+                            buffer.append("ID: " + dataResult.getString(0) + "\n");
+                            buffer.append("Name: " + dataResult.getString(1) + "\n");
+                            buffer.append("Surname: " + dataResult.getString(2) + "\n");
+                            buffer.append("Marks: " + dataResult.getString(3) + "\n\n");
+                        }
+
+                        // Show all data
+                        showMessage("Data", buffer.toString());
+                    }
+                }
+        );
+    }
+
+    public void flushData() {
+        btnDeleteData.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Cursor dataResult = myDb.deleteAllData();
+
+                        if (dataResult.getCount() == 0){
+                            // Show Error Message
+                            showMessage("Success", "Data Wiped");
                             return;
                         }
 
